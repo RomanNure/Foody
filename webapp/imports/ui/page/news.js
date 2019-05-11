@@ -1,14 +1,12 @@
 import React, { Component } from 'react';
 // App component - represents the whole app
 
-export default class About extends Component {
+export default class News extends Component {
  
   render() {
     return (
       <div className="container">
-        <header>
-          <h1>About</h1>
-        </header>
+          <h1>News</h1>
       </div>
     );
   }

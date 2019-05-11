@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, browserHistory} from 'react-router-dom'
-import App from './page/app.js';
-import About from './page/about.js';
-import Page from './page/page.js';
+import Main from './page/main.js';
+import Account from './page/account.js';
+import News from './page/news.js';
 
 export default class Root extends Component{
 	render(){
@@ -11,9 +11,9 @@ export default class Root extends Component{
 			<div>
 				<Router history={browserHistory}>
 					<div>
-						<Route path="/" component={App}/>
-						<Route path="/about" component={About} />
-						<Route path="/page" component={Page} />
+						<Route path="/" component={Main}/>
+						<Route path="/account" component={Account}/>
+						<Route path="/news" component={News}/>
 					</div>
 				</Router>
 			</div>
