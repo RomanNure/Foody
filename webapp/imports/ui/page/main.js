@@ -4,27 +4,52 @@ export default class Main extends Component {
 	render() {
 		console.log('header');
 		return (
-			<>
-			<div className="heeader">
-				<div id ="main-button" className ="main">
-					<form action="/">
-						<img/>
-
-					</form>
+			<div className="navbar navbar-default">
+				<div className="container-fluid">
+					<div id ="main-button" className="navbar-header">
+						<a href="/" className="navbar-brand">
+							<svg id="logo"/>
+						</a>
+					</div>
+					<div>
+						<ul className="nav navbar-nav">
+							<li className="active">
+								<a> Hello</a>
+							</li>
+							<li>
+								<a> HHH</a>
+							</li>
+							<li>
+								<a> Buy</a>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<div>
+							<div id="acc">
+								<div>
+								</div>
+							</div>
+							<form action="/account">
+								
+								<button>Account</button>
+							</form>
+						</div>
+					</div>
 				</div>
-				<div id ="account-button" className ="account">
-					<form action="/account">
-						<button className="active">Account</button>
-					</form>
-				</div>
-				<div id ="news-button" className ="news">
-					<form action="/news">
-						<button className="active">News</button>
-					</form>
+				<div>
+					<div>
+						<form action="/news">
+							<button>News</button>
+						</form>
+					</div>
+					<div>
+						<form action="/recipes">
+							<button>Recipes</button>
+						</form>
+					</div>
 				</div>
 			</div>
-
-			</>
 		)
 	}
 }

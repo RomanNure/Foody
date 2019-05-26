@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, browserHistory} from 'react-router-dom'
 import Main from './page/main.js';
-import Account from './page/account.js';
+import Account from './page/acc/account.js';
 import News from './page/news.js';
 
 export default class Root extends Component{
