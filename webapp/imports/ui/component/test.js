@@ -50,7 +50,7 @@ export default class RecipeAdd extends Component {
 	handleSubmit = () => (e) =>{
 		e.preventDefault();
 		let data = this.state.data;
-//		window.Toast('I am a toast!','ok');
+		window.Toast('I am a toast!','ok');
 	//	data.name = this.refs.name.value();
 		Meteor.call("recipe.add", this.state.data, (err,done)=>{
 			if(err) console.log('err0r');
@@ -71,6 +71,7 @@ export default class RecipeAdd extends Component {
 		return (
 			<div className="container">
 				<div className="row">
+				  <a onClick={M.toast({html: 'I am a toast'})} className="btn">Toast!</a>
 
 						<div className="input-field col-12">
 							<input id="name" placeholder="Name" ref="name" type="text" className="validate"/>
