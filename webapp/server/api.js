@@ -8,7 +8,8 @@ import { DB_Reviews } from '/imports/api/review.js';
 
 
 if(Meteor.isServer){
-console.log('server');
+	console.log('server');
+
 
 
 
