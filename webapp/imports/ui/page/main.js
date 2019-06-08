@@ -69,8 +69,8 @@ export default class Main extends Component {
 								<Dropdown trigger={
 									<Button>Drop me!</Button>
 								}>
-									<ul className="nav-dropdown-items">      
-											<li className="side">
+								<ul className="nav-dropdown-items">      
+									<li className="side">
 										<NavLink to="/account" className="nav-link waves-effect waves-light"><i className="small material-icons prefix">account_box</i> Account</NavLink>  
 									</li>
 									<li className="side">
@@ -87,7 +87,7 @@ export default class Main extends Component {
 										<NavLink to="/massages" className="nav-link waves-effect waves-light"><i className="small material-icons prefix">mail_outline</i> Massages</NavLink>  
 									</li>
 								</ul>
-							</Dropdown>;
+							</Dropdown>
 							{/*					<div className="nav-item nav-dropdown col-9">
 									<a  className="nav-link nav-dropdown-toggle"><i className="material-icons right">arrow_drop_down</i></a>
 									<ul className="nav-dropdown-items">      

@@ -12,7 +12,6 @@ export default class RecipeAdd extends Component {
 				recipe: false,
 				tags: false, 
 				images: false,
-
 			}
 		}
 	}
