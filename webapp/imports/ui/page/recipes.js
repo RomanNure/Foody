@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
-//import RecipeSmall from '../recipe-small.js';
+import RecipeSmall from '../component/Recipe-small.js';
 
 class Recipes extends Component {
 
@@ -23,11 +23,14 @@ class Recipes extends Component {
 		return (
 			<div className="container-fluid">
 				<div className="row">
-					{	this.state.data && this.state.data.map((i,k)=>{
-							console.log('data=>', i,k);
-						//{	<Recipe_small data={this.state.data}/>
-					
-						})
+					{	//this.state.data && this.state.data.map((i,k)=>{
+						//	console.log('data=>', i,k);
+						//	return(
+								<div className="recipe-small">
+									<RecipeSmall data={this.state.data}/>
+								</div>
+						//	)
+					//	})
 						
 					}	
 				</div>
@@ -50,6 +53,6 @@ export default withTracker(() => {
 
 	return {
 		ready,
-		recipes: Tasks.find({}).fetch(),
+//		recipes: Tasks.find({}).fetch(),
 	};
 })(Recipes);

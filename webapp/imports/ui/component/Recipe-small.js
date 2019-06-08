@@ -1,51 +1,51 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 
-import Carousel from 'nuka-carousel';
+import Carousel from 'react-materialize';
 
 
 export default class RecipeSmall extends Component {
-	constructor(props){
-		super(props);
-		this.state={
-			data:this.props.data?
-				this.props.data:{
-					img: "temp"
+    constructor(props){
+        super(props);
+        this.state={
+        }
+    }
+    componentDidMount() {
+            var elems = document.querySelectorAll('.carousel');
+            var instances = M.Carousel.init(elems, options);
 
-				}
-		}
-	}
-	render() {
-		console.log('recipe-small');
-		return(
-			<div className="container-fluid">
-				<div className="row">
-					<div className="col-4">
-						<img/>
-					</div>
-					<div className="col-6">
-						<div className="row">
-							<div className="col-12">
-								<div>tags</div>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div className="row">
-					<Carousel>
-						<img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide1"/>
-						<img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide2"/>
-						<img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide3"/>
-						<img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide4"/>
-						<img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide5"/>
-						<img src="http://placehold.it/1000x400/ffffff/c0392b/&text=slide6"/>
-					</Carousel>
-				</div>
-				<div className="row">i
-					
-				</div>
-			</div>
-		)
+    }
 
-	}
+    render() {
+        console.log('recipe-small');
+        return(
+            <div className="container-fluid">
+                <div className="row">
+                    <div className="col-4">
+                        <img/>
+                    </div>
+                    <div className="col-6">
+                        <div className="row">
+                            <div className="col-12">
+                                <div>tags</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className="row">
+                    <div className="carousel">
+                        <a className="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"/></a>
+                        <a className="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"/></a>
+                        <a className="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"/></a>
+                        <a className="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"/></a>
+                        <a className="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"/></a>
+                    </div>		
+                </div>
+                <div className="row">
+
+                </div>
+            </div>
+        )
+
+    }
 
 }
