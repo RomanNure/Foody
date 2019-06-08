@@ -26,9 +26,9 @@ export default class Main extends Component {
 						</a>
 					</div>
 
-					<div className=" nav-item col-md-2">
+					<div className=" nav-item col-2">
 					</div>
-					<div className=" nav-item col-md-4">
+					<div className=" nav-item col-4">
 						<form className="col s12">
 							<div className="row">
 								<div className="input-field col s12 nav-wrapper">
@@ -39,7 +39,7 @@ export default class Main extends Component {
 							</div>
 						</form>
 					</div>
-					<div className="nav-item col-2">
+					<div className="nav-item col-1">
 					</div>
 					<div className="nav-item">
 						<div className="col-4">
