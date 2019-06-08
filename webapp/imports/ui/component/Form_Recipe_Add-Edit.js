@@ -16,7 +16,7 @@ export default class RecipeAdd extends Component {
 			}
 		}
 	}
-//	shouldComponentUpdate()
+	//	shouldComponentUpdate()
 	ingAdd = () => (e) => {
 		e.preventDefault();
 		let data = this.state.data;
@@ -50,8 +50,8 @@ export default class RecipeAdd extends Component {
 	handleSubmit = () => (e) =>{
 		e.preventDefault();
 		let data = this.state.data;
-//		window.Toast('I am a toast!','ok');
-	//	data.name = this.refs.name.value();
+		//		window.Toast('I am a toast!','ok');
+		//	data.name = this.refs.name.value();
 		Meteor.call("recipe.add", this.state.data, (err,done)=>{
 			if(err) console.log('err0r');
 			console.log(done);
@@ -72,14 +72,14 @@ export default class RecipeAdd extends Component {
 			<div className="container">
 				<div className="row">
 
-						<div className="input-field col-12">
-							<input id="name" placeholder="Name" ref="name" type="text" className="validate"/>
-							<label for="name">Recipe name</label>
-						</div>
-						<div className="input-field col-7">
-							<input id="ing1" placeholder="Sugar" ref="ing" type="text" className="validate"/>
-							<label for="ing1">Ingridients</label>
-						</div>
+					<div className="input-field col-12">
+						<input id="name" placeholder="Name" ref="name" type="text" className="validate"/>
+						<label for="name">Recipe name</label>
+					</div>
+					<div className="input-field col-7">
+						<input id="ing1" placeholder="Sugar" ref="ing" type="text" className="validate"/>
+						<label for="ing1">Ingridients</label>
+					</div>
 					<div className="row col-12">
 						{this.state.data.ingr && this.state.data.ingr.map((i,k) => {
 							return <div key={'ing-'+i+'-'+k} className="col-7">
@@ -91,7 +91,7 @@ export default class RecipeAdd extends Component {
 								</div>
 							</div>
 						})}
-						
+
 						<div className="row">
 							<button className="btn-floating btn-large waves-effect waves-light red" icon='add' onClick={this.ingAdd()}><i>+</i> Add Ingridient</button>
 						</div>
@@ -121,6 +121,19 @@ export default class RecipeAdd extends Component {
 					<div className="row">
 						<button className="btn-floating btn-large waves-effect waves-light red" waves='light' icon='add' onClick={this.stepAdd()}><i>+</i> Add Step</button>
 					</div>
+				</div>
+				<div className="row">
+					<form action="#">
+						<div class="file-field input-field">
+							<div class="btn">
+								<span>File</span>
+								<input type="file" multiple/>
+							</div>
+							<div class="file-path-wrapper">
+								<input class="file-path validate" type="text" placeholder="Upload one or more files"/>
+							</div>
+						</div>
+					</form>
 				</div>
 				<div className="row">
 					<div className="input-field col-12">

@@ -10,6 +10,18 @@ import { DB_Reviews } from '/imports/api/review.js';
 if(Meteor.isServer){
 	console.log('server');
 
+	Meteor.publish("recipes",()=>{
+		console.log('- recipe pub');
+		return 	DB_Recipes.find();
+	})
+	Meteor.publish("news",()=>{
+		console.log('- recipe pub');
+		return [	
+		//	DB_Recipes.find({}, {sort:{createdAt:-1}}),
+		//	DB_Reviews.find({},{sort:{createdAt:-1}})
+		
+		]
+	})
 
 
 
