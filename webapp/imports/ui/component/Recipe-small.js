@@ -4,41 +4,49 @@ import Carousel from 'react-materialize';
 
 
 export default class RecipeSmall extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
-        this.state={
+        this.state = {
         }
     }
     componentDidMount() {
-            var elems = document.querySelectorAll('.carousel');
-            var instances = M.Carousel.init(elems);
+        var elems = document.querySelectorAll('.carousel');
+        var instance = M.Carousel.init({
+            fullWidth: true,
+            indicators: true
+          });
+        
 
     }
 
     render() {
         console.log('recipe-small');
-        return(
+        return (
             <div className="container-fluid">
+                <button>Hello there
+                </button>
                 <div className="row">
-                    <div className="col-4">
-                        <img/>
-                    </div>
-                    <div className="col-6">
-                        <div className="row">
-                            <div className="col-12">
-                                <div>tags</div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
-                <div className="row">
-                    <div className="carousel">
-                        <a className="carousel-item" href="#one!"><img src="https://lorempixel.com/250/250/nature/1"/></a>
-                        <a className="carousel-item" href="#two!"><img src="https://lorempixel.com/250/250/nature/2"/></a>
-                        <a className="carousel-item" href="#three!"><img src="https://lorempixel.com/250/250/nature/3"/></a>
-                        <a className="carousel-item" href="#four!"><img src="https://lorempixel.com/250/250/nature/4"/></a>
-                        <a className="carousel-item" href="#five!"><img src="https://lorempixel.com/250/250/nature/5"/></a>
-                    </div>		
+                <div class="carousel carousel-slider center">
+                    <div class="carousel-fixed-item center">
+                        <a class="btn waves-effect white grey-text darken-text-2">button</a>
+                    </div>
+                    <div class="carousel-item red white-text" href="#one!">
+                        <h2>First Panel</h2>
+                        <p class="white-text">This is your first panel</p>
+                    </div>
+                    <div class="carousel-item amber white-text" href="#two!">
+                        <h2>Second Panel</h2>
+                        <p class="white-text">This is your second panel</p>
+                    </div>
+                    <div class="carousel-item green white-text" href="#three!">
+                        <h2>Third Panel</h2>
+                        <p class="white-text">This is your third panel</p>
+                    </div>
+                    <div class="carousel-item blue white-text" href="#four!">
+                        <h2>Fourth Panel</h2>
+                        <p class="white-text">This is your fourth panel</p>
+                    </div>
                 </div>
                 <div className="row">
 

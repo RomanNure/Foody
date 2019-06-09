@@ -5,7 +5,8 @@ export default class News extends Component {
 		console.log('news');
 		return (
 				<div className="container-fluid">
-                    <div className="row"> 
+                    <div className="row">
+                        <button>hello</button> 
                         <div className="col-md-1" >left</div>
                         <div className="col-md-1" >Mid</div>
                         <div className="col-md-1" >right</div>
