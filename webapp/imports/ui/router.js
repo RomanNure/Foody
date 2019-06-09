@@ -23,7 +23,7 @@ export default class Root extends Component {
 						<div className='col col-2'>
 							<LeftBar />
 						</div>
-						<div className='col col-10'>
+						<div className='col col-lg-8'>
 								<Route path="/news" component={News} />
 								<Route path="/account" component={Account} />
 								<Route path="/recipes" component={Recipes} />

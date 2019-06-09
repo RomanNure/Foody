@@ -45,11 +45,11 @@ class Recipes extends Component {
 						console.log('data=>', i, k);
 						return (
 							<>
-							<div className="recipe-small col col-8">
+							<div className="recipe-small col-md-7 offset-md-2">
 								<RecipeSmall data={this.state.data} />
 							</div>
-							<div className="col col-6">
-								<div>aga</div>
+							<div className="col col-6 devider">
+								<div>hello</div>
 							</div>
 							</>
 						)

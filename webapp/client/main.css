@@ -80,9 +80,7 @@ a:hover {
 	background-color: #2B2121;
 }
 .recipe-small{
-
 	background-color: #FFFFFF;
-
 }
 #root{
 	background-color: #212121;
@@ -90,6 +88,11 @@ a:hover {
 .modal{
 	width:1920px;
 	height:1080px;
+}
+.avatar{
+
+	background-color: #21b221;
+
 }
 
 body {

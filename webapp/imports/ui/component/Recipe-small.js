@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import Carousel from 'react-materialize';
+import { Carousel } from 'react-materialize';
 
 
 export default class RecipeSmall extends Component {
@@ -11,11 +11,7 @@ export default class RecipeSmall extends Component {
     }
     componentDidMount() {
         var elems = document.querySelectorAll('.carousel');
-        var instance = M.Carousel.init({
-            fullWidth: true,
-            indicators: true
-          });
-        
+        var instances = M.Carousel.init(elems);
 
     }
 
@@ -23,33 +19,31 @@ export default class RecipeSmall extends Component {
         console.log('recipe-small');
         return (
             <div className="container-fluid">
-                <button>Hello there
-                </button>
-                <div className="row">
-                </div>
-                <div class="carousel carousel-slider center">
-                    <div class="carousel-fixed-item center">
-                        <a class="btn waves-effect white grey-text darken-text-2">button</a>
+                <div className="row user">
+                    <div className="col col-2">
+                        <svg id="avatar_temp" alt="" className="circle responsive-img" />
                     </div>
-                    <div class="carousel-item red white-text" href="#one!">
-                        <h2>First Panel</h2>
-                        <p class="white-text">This is your first panel</p>
-                    </div>
-                    <div class="carousel-item amber white-text" href="#two!">
-                        <h2>Second Panel</h2>
-                        <p class="white-text">This is your second panel</p>
-                    </div>
-                    <div class="carousel-item green white-text" href="#three!">
-                        <h2>Third Panel</h2>
-                        <p class="white-text">This is your third panel</p>
-                    </div>
-                    <div class="carousel-item blue white-text" href="#four!">
-                        <h2>Fourth Panel</h2>
-                        <p class="white-text">This is your fourth panel</p>
+                    <div className="col col-3">
+                        <div className="row name">
+                            {this.state.name?this.state.name:"N/A"}
+                        </div>
+                        <div className="row rating">
+                            {this.state.name?this.state.name:"125 cooker"}
+                        </div>
                     </div>
                 </div>
                 <div className="row">
-
+                    <Carousel options={{ fullWidth: true, indicators: true }} images={[
+                        'https://lorempixel.com/800/400/food/1',
+                        'https://lorempixel.com/800/400/food/2',
+                        'https://lorempixel.com/800/400/food/3',
+                        'https://lorempixel.com/800/400/food/4'
+                    ]} />
+                </div>
+                <div className="row">
+                    <div className="col col-4 recipe-rating">3/5</div>    
+                    <div className="col col-lg-2 recipe-rating">like</div>    
+                    <div className="col col-lg-2 recipe-rating">Comments</div>    
                 </div>
             </div>
         )
