@@ -1,21 +1,31 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, browserHistory} from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch, browserHistory } from 'react-router-dom'
+
+import LeftBar from './component/leftbar';
 import Main from './page/main.js';
+import Header from './page/header.js';
 import Account from './page/acc/account.js';
 import News from './page/news.js';
 import Recipes from './page/recipes.js';
 
-export default class Root extends Component{
-	render(){
+export default class Root extends Component {
+	render() {
 		console.log('router work');
 		return (
 			<div>
-				<Router history={browserHistory}>
-					<div>
-						<Route path="/" component={Main}/>
-						<Route path="/account" component={Account}/>
-						<Route path="/news" component={News}/>
-						<Route path="/recipes" component={Recipes}/>
+				<Router>
+					<Header />
+					<div className="row body">
+						<div className='col col-2'>
+							<LeftBar />
+						</div>
+						<div className='col col-10'>
+							<Switch>
+								<Route path="/" component={News} />
+								<Route path="/account" component={Account} />
+								<Route path="/recipes" component={Recipes} />
+							</Switch>
+						</div>
 					</div>
 				</Router>
 			</div>

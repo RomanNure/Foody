@@ -19,6 +19,21 @@ class Recipes extends Component {
 
 
 	render() {
+		if(!this.props.ready)
+			return (
+				<div class="preloader-wrapper active">
+					<div class="spinner-layer spinner-red-only">
+						<div class="circle-clipper left">
+							<div class="circle"></div>
+							</div><div class="gap-patch">
+							<div class="circle"></div>
+							</div><div class="circle-clipper right">
+							<div class="circle"></div>
+						</div>
+					</div>
+				</div>
+			)
+
 		console.log('recipes');
 		return (
 			<div className="container-fluid">
@@ -26,12 +41,12 @@ class Recipes extends Component {
 					{	//this.state.data && this.state.data.map((i,k)=>{
 						//	console.log('data=>', i,k);
 						//	return(
-								<div className="recipe-small">
-									<RecipeSmall data={this.state.data}/>
-								</div>
-						//	)
-					//	})
-						
+						<div className="recipe-small">
+							<RecipeSmall data={this.state.data}/>
+						</div>
+							//	)
+							//	})
+
 					}	
 				</div>
 			</div>
@@ -41,7 +56,7 @@ class Recipes extends Component {
 
 
 export default withTracker(() => {
-	let ready=true, user, isAdmin = false;
+	let ready=false, user, isAdmin = false;
 	if(Meteor.isClient){
 		const h = [
 			Meteor.subscribe('recipes'),
@@ -53,6 +68,6 @@ export default withTracker(() => {
 
 	return {
 		ready,
-//		recipes: Tasks.find({}).fetch(),
+//		recipes: .find({}).fetch(),
 	};
 })(Recipes);

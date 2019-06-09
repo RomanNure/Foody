@@ -123,13 +123,13 @@ export default class RecipeAdd extends Component {
 				</div>
 				<div className="row">
 					<form action="#">
-						<div class="file-field input-field">
-							<div class="btn">
+						<div className="file-field input-field">
+							<div className="btn">
 								<span>File</span>
 								<input type="file" multiple/>
 							</div>
-							<div class="file-path-wrapper">
-								<input class="file-path validate" type="text" placeholder="Upload one or more files"/>
+							<div className="file-path-wrapper">
+								<input className="file-path validate" type="text" placeholder="Upload one or more files"/>
 							</div>
 						</div>
 					</form>

@@ -11,7 +11,7 @@ export default class RecipeSmall extends Component {
     }
     componentDidMount() {
             var elems = document.querySelectorAll('.carousel');
-            var instances = M.Carousel.init(elems, options);
+            var instances = M.Carousel.init(elems);
 
     }
 

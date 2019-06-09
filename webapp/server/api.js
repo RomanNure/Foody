@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 //import { check, Match } from 'meteor/check';
 //import { Accounts } from 'meteor/accounts-base';
 
-import { DB_Recipes } from '/imports/api/recipes.js';
+import { DB_Recipe } from '/imports/api/recipes.js';
 import { DB_Reviews } from '/imports/api/review.js';
 
 
@@ -12,7 +12,7 @@ if(Meteor.isServer){
 
 	Meteor.publish("recipes",()=>{
 		console.log('- recipe pub');
-		return 	DB_Recipes.find();
+		return 	DB_Recipe.find();
 	})
 	Meteor.publish("news",()=>{
 		console.log('- recipe pub');

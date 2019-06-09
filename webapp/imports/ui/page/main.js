@@ -16,16 +16,19 @@ export default class Main extends Component {
 		}
 	}
 	componentDidMount(){
-	console.log('mount')
-			var elems = document.querySelectorAll('.modal');
-			var instances = M.Modal.init(elems);
-			console.log('ins',instances)
+		console.log('mount')
+		var elems = document.querySelectorAll('.modal');
+		var instances = M.Modal.init(elems);
+		console.log('ins',instances)
 	}
 	show = () => (e) => {
 		e.preventDefault()
-	//	 M.Modal.getInstance(elem);
-
-
+		//	 M.Modal.getInstance(elem);
+	}
+	changePage = (i) => (e) => {
+		e.preventDefault()
+		console.log(e)
+		this.setState
 	}
 	render() {
 		console.log('header');
@@ -101,19 +104,27 @@ export default class Main extends Component {
 					</div>
 				</div>
 			</div>
-		</div>
+			<div id="modal1" className="modal">
+				<RecipeAdd/>
+			</div>
+			<div id="modal2" className="modal">
+				<div className="">
+					<RecipeAdd/>
+				</div>
+			</div>
 			<div className="sidebar-nav">
 				<div className="nav-item col-2">
 					<div className="col-6 ">
-						<NavLink to="news" className="waves-teal news-tab"> <svg id="news"/></NavLink>
-						<NavLink to="recipes" className="waves-teal recipe-tab"> <svg id="recipes"/></NavLink>
+						<NavLink to="news" className="waves-teal news-tab" onClick={this.changePage(this)}> <svg id="news"/></NavLink>
+						<NavLink to="recipes" className="waves-teal recipe-tab" onClick={this.changePage(this)}> <svg id="recipes"/></NavLink>
 					</div>
 				</div>
 			</div>
-
-			<div id="modal1" className="modal">
-					<RecipeAdd/>
+			<div className="nav-item col-10">
+				<div> Hello</div>
 			</div>
+
+		</div>
 
 
 			<div className="fixed-action-btn">
@@ -121,10 +132,8 @@ export default class Main extends Component {
 					<i className="large material-icons">mode_edit</i>
 				</a>
 				<ul>
-					<li><a data-target="modal1" className="btn-floating red darken-1 modal-trigger"><i className="material-icons">add_to_photos</i>
-
-					</a></li>
-					<li><a className="btn-floating red darken-1"><i className="material-icons">add_circle</i></a></li>
+					<li><a data-target="modal1" className="btn-floating red darken-1 modal-trigger"><i className="material-icons">add_to_photos</i></a></li>
+					<li><a data-target="modal2" className="btn-floating red darken-1 modal-trigger"><i className="material-icons">add_circle</i></a></li>
 				</ul>
 			</div>
 
