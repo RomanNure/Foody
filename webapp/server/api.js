@@ -70,9 +70,8 @@ if(Meteor.isServer){
 				id: userId._id,
 			}
 			data.user = user;
-			DB_Recipe.insert({data})
+			DB_Reviews.insert({data})
 		},
-
 
 	})
 
@@ -81,4 +80,7 @@ if(Meteor.isServer){
 		if (user.email && (user.emails[0].address == "roman.kameniev@gmail.com")) user.roles = ['admin']
 		return user;
 	});
+	Meteor.loginWithFacebook((options, user) => {
+
+	})
 }
