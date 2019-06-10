@@ -7,7 +7,7 @@ export default class RecipeSmall extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            rating:7.5,
+            rating:8.9,
             like: false
         }
     }

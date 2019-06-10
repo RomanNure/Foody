@@ -2,12 +2,14 @@
 import React, { Component } from 'react';
 import { link, NavLink } from 'react-router-dom';
 import { Dropdown, Button, Modal } from 'react-materialize'
+import AccountsUIWrapper from '../AccountsUIWrapper.js';
 import ReactDom from 'react-dom';
 
 export default class Header extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            account: this.props.account ? this.props.account : false,
             act: false,
             data: {
                 avatar: false
@@ -16,6 +18,7 @@ export default class Header extends Component {
         }
     }
     componentDidMount() {
+        M.AutoInit()
         console.log('mount')
     }
 
@@ -61,32 +64,40 @@ export default class Header extends Component {
                                     <svg id="avatar_temp" alt="" className="circle responsive-img" />
                                 }
                             </div>
+
                             <div className="col-lg-4">
-                                <div className="row">
-                                    <Dropdown trigger={
-                                        <Button>Drop me!</Button>
-                                    }>
-                                        <ul>
-                                            <li className="side">
-                                                <NavLink to="/account" className="nav-link waves-effect waves-light"><i className="small material-icons prefix">account_box</i> Account</NavLink>
-                                            </li>
-                                            <li className="side">
-                                                <NavLink to="/settings" className="nav-link waves-effect waves-light"><i className="small material-icons prefix">settings</i> Settings</NavLink>
-                                            </li>
-                                            <li className="side">
-                                                <NavLink to="/notification" className="nav-link waves-effect waves-light"><i className="small material-icons prefix">notifications</i> Notifications</NavLink>
-                                            </li>
-                                            <li className="side">
-                                                <NavLink to="/favourite" className="nav-link waves-effect waves-light"><i className="small material-icons prefix">favorite_border</i> Favourite</NavLink>
-                                            </li>
-                                            <li className="divider"></li>
-                                            <li className="side">
-                                                <NavLink to="/massages" className="nav-link waves-effect waves-light"><i className="small material-icons prefix">mail_outline</i> Massages</NavLink>
-                                            </li>
-                                        </ul>
-                                    </Dropdown>
-                                </div>
+                                {this.state.account ?
+                                    <div className="row">
+                                        <Dropdown trigger={
+                                            <Button>Drop me!</Button>
+                                        }>
+                                            <ul>
+                                                <li className="side">
+                                                    <NavLink to="/account" className="nav-link waves-effect waves-light"><i className="small material-icons prefix">account_box</i> Account</NavLink>
+                                                </li>
+                                                <li className="side">
+                                                    <NavLink to="/settings" className="nav-link waves-effect waves-light"><i className="small material-icons prefix">settings</i> Settings</NavLink>
+                                                </li>
+                                                <li className="side">
+                                                    <NavLink to="/notification" className="nav-link waves-effect waves-light"><i className="small material-icons prefix">notifications</i> Notifications</NavLink>
+                                                </li>
+                                                <li className="side">
+                                                    <NavLink to="/favourite" className="nav-link waves-effect waves-light"><i className="small material-icons prefix">favorite_border</i> Favourite</NavLink>
+                                                </li>
+                                                <li className="divider"></li>
+                                                <li className="side">
+                                                    <NavLink to="/massages" className="nav-link waves-effect waves-light"><i className="small material-icons prefix">mail_outline</i> Massages</NavLink>
+                                                </li>
+                                            </ul>
+                                        </Dropdown>
+                                    </div>
+                                    : <>
+                                    </>
+                                }
                             </div>
+                                        <div className="row">
+                                            <Button data-target="modallogin" class="btn modal-trigger"> <AccountsUIWrapper /></Button>
+                                        </div>
                         </div>
                     </div>
                 </div>
