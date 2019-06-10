@@ -20,3 +20,5 @@ materialize:materialize
 accounts-ui
 accounts-password
 react-meteor-data
+check
+alanning:roles
