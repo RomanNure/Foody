@@ -21,6 +21,11 @@ a:hover {
 	height:96px;
     background-image: url("./img/aa.svg");
 }
+#logo-back{
+	width:96px;
+	height:96px;
+    background-image: url("./img/ab.svg");
+}
 #avatar_temp{
 	width:48px;
 	height:47px;

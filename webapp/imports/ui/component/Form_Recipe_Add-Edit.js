@@ -72,11 +72,11 @@ export default class RecipeAdd extends Component {
 				<div className="row">
 
 					<div className="input-field col-12">
-						<input id="name" placeholder="Name" ref="name" type="text" className="validate"/>
+						<input id="name" ref="name" type="text" className="validate"/>
 						<label for="name">Recipe name</label>
 					</div>
 					<div className="input-field col-7">
-						<input id="ing1" placeholder="Sugar" ref="ing" type="text" className="validate"/>
+						<input id="ing1"  ref="ing" type="text" className="validate"/>
 						<label for="ing1">Ingridients</label>
 					</div>
 					<div className="row col-12">
@@ -98,11 +98,11 @@ export default class RecipeAdd extends Component {
 				</div>
 				<div className="row">
 					<div className="input-field col-12">
-						<textarea id="recipe-body" className="materialize-textarea" placeholder="Describe recipe" ></textarea>
+						<textarea id="recipe-body" className="materialize-textarea" ></textarea>
 						<label for="recipe-body">Recipe body</label>
 					</div>
 					<div className="input-field col-7">
-						<input id="step" placeholder="#" ref="step" type="text" className="validate"/>
+						<input id="step" ref="step" type="text" className="validate"/>
 						<label for="step">Steps</label>
 					</div>
 				</div>

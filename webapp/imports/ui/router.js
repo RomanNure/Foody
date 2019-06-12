@@ -4,17 +4,25 @@ import { BrowserRouter as Router, Route, Switch, browserHistory } from 'react-ro
 import LeftBar from './component/leftbar';
 import Main from './page/main.js';
 import Header from './page/header.js';
+import Footer from './page/footer.js';
 import Account from './page/acc/account.js';
 import News from './page/news.js';
 import Recipes from './page/recipes.js';
 import RecipeAdd from './component/Form_Recipe_Add-Edit';
+import ReviewAdd from './component/Form_Review_Add-Edit';
 
 export default class Root extends Component {
+	constructor(props){
+		super(props)
+		this.state= {
+		}
+	}
 	componentDidMount(){
+		this.setState({recipeadd: false, reviewadd: false})
 		M.AutoInit();
 	}
 	render() {
-		console.log('router work');
+		console.log('router work', this.state);
 		return (
 			<div>
 				<Router>
@@ -23,29 +31,15 @@ export default class Root extends Component {
 						<div className='col col-2'>
 							<LeftBar />
 						</div>
-						<div className='col col-lg-8'>
+							<div className='col col-lg-8'>
 								<Route path="/news" component={News} />
 								<Route path="/account" component={Account} />
 								<Route path="/recipes" component={Recipes} />
-						</div>
+								<Route path="/recipe-add" component={RecipeAdd}/>
+								<Route path="/review-add" component={ReviewAdd}/>
+							</div>
 					</div>
-					<div id="modal1" className="modal">
-						<RecipeAdd />
-					</div>
-					<div id="modal2" className="modal">
-						<div className="">
-							<RecipeAdd />
-						</div>
-					</div>
-					<div className="fixed-action-btn">
-						<a className="btn-floating btn-large red">
-							<i className="large material-icons">mode_edit</i>
-						</a>
-						<ul>
-							<li><a data-target="modal1" className="btn-floating red darken-1 modal-trigger"><i className="material-icons">add_to_photos</i></a></li>
-							<li><a data-target="modal2" className="btn-floating red darken-1 modal-trigger"><i className="material-icons">add_circle</i></a></li>
-						</ul>
-					</div>
+					<Footer/>
 				</Router>
 			</div>
 		)
