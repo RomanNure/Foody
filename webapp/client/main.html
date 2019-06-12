@@ -7,11 +7,38 @@
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <!-- Compiled and minified JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<script src="https://apis.google.com/js/platform.js" async defer></script>
+
 	<link rel="icon" type="image/x-icon" href="./foody.ico">            
 	<title> Foody </title>
+
+<script>
+	window.fbAsyncInit = function() {
+	  FB.init({
+		appId      : '{your-app-id}',
+		cookie     : true,
+		xfbml      : true,
+		version    : '{api-version}'
+	  });
+	  FB.AppEvents.logPageView();   
+	};
+	(function(d, s, id){
+	   var js, fjs = d.getElementsByTagName(s)[0];
+	   if (d.getElementById(id)) {return;}
+	   js = d.createElement(s); js.id = id;
+	   js.src = "https://connect.facebook.net/en_US/sdk.js";
+	   fjs.parentNode.insertBefore(js, fjs);
+	 }(document, 'script', 'facebook-jssdk'));
+  </script>
 </head>
 <body>
+		<div
+		class="fb-like"
+		data-share="true"
+		data-width="450"
+		data-show-faces="true">
+	</div>
 	<div id="root"/>
 </body>
 

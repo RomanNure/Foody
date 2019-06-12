@@ -72,15 +72,16 @@ if(Meteor.isServer){
 			data.user = user;
 			DB_Reviews.insert({data})
 		},
-
+		'recipe.like'(id){}
 	})
+
 
 	Accounts.onCreateUser((options, user) => {
 		user.profile = options.profile || {};
 		if (user.email && (user.emails[0].address == "roman.kameniev@gmail.com")) user.roles = ['admin']
 		return user;
 	});
-	Meteor.loginWithFacebook((options, user) => {
+	//Meteor.loginWithFacebook((options, user) => {
 
-	})
+//	})
 }

@@ -39,9 +39,9 @@ export default class Header extends Component {
                         <form className="col s12">
                             <div className="row">
                                 <div className="input-field col s12 nav-wrapper">
-                                    <div className="row">
+                                    <div className="row blue-text text-darken-2">
                                         <i className="small material-icons prefix">search</i>
-                                        <input id="search" type="search" className="validate" />
+                                        <input id="search" type="search" className="validate blue-text text-darken-2" />
                                         <label for="search">Search</label>
                                     </div>
                                 </div>

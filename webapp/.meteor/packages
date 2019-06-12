@@ -22,3 +22,9 @@ accounts-password
 react-meteor-data
 check
 alanning:roles
+service-configuration
+accounts-facebook
+accounts-twitter
+google-config-ui
+accounts-google
+facebook-config-ui
