@@ -3,7 +3,7 @@ import { Roles } from 'meteor/alanning:roles';
 import { check, Match } from 'meteor/check';
 import { Accounts } from 'meteor/accounts-base';
 
-import { DB_Recipe } from '/imports/api/recipes.js';
+import { DB_Recipes } from '/imports/api/recipes.js';
 import { DB_Reviews } from '/imports/api/review.js';
 
 
@@ -12,7 +12,7 @@ if(Meteor.isServer){
 
 	Meteor.publish("recipes",()=>{
 		console.log('- recipe pub');
-		return 	DB_Recipe.find();
+		return 	DB_Recipes.find();
 	})
 	Meteor.publish("news",()=>{
 		console.log('- recipe pub');
@@ -24,6 +24,8 @@ if(Meteor.isServer){
 	})
 	Meteor.methods({
 		'recipe.add'(data){
+			const userId = Meteor.userId()
+			console.log('adding recipe by user', userId)
 			check(data,{
 				title: String,
 				RBody: String,
@@ -32,26 +34,24 @@ if(Meteor.isServer){
 				tags: Match.Maybe(String),
 				imgs: Match.Maybe([String])
 			})
-			if(!Meteor.userId()) throw new Meteor.Error('please authorize to continue');
-			let userId = Meteor.users.findOne({_id:Meteor.userId()})
 			if(!userId) throw new Meteor.Error('please authorize to continue');
+			let user = Meteor.users.findOne({_id:Meteor.userId()})
+			if(!user) throw new Meteor.Error('please authorize to continue');
 			console.log('user =>',user);
-			let	user = {
+			let	userData = {
 				name: userId.name,
 				img: userId.img,
 				id: userId._id,
 			}
-			data.user = user;
-			DB_Recipe.insert({data})
+			data.user = userData;
+			DB_Recipes.insert({data})
 		},
 		'recipe.edit'(id){
-			if(Meteor.userId()){
-				console.log(' user=>', userId);
-			}
+			if(!Meteor.userId()) return "no roots"
+			console.log(' user=>', userId);
 			let recipe = DB_Recipes.find({_id:id});
 			if(recipe) return recipe;
 			return 'no roots';
-
 		},
 		'review.add'(data){
 			check(data,{
@@ -70,9 +70,30 @@ if(Meteor.isServer){
 				id: userId._id,
 			}
 			data.user = user;
-			DB_Reviews.insert({data})
+			return DB_Reviews.insert({data})
 		},
-		'recipe.like'(id){}
+		'recipe.like'(id){
+			check(id, String);
+			const userId = Meteor.userId()
+			if(!userId) throw new Meteor.Error('please autorize to continue');
+			let recipe = DB_Recipes.findOne({_id:id});
+			let like;
+			if (!recipe) throw new Meteor.Error('no such recipe');
+			if(!recipe.like) like = 1;
+			else like = recipe.like+1;
+			return DB_Recipes.updateOne({_id:id, {$set:{'like':like}})
+		}
+		'review.like'(id){
+			check(id, String);
+			const userId = Meteor.userId()
+			if(!userId) throw new Meteor.Error('please autorize to continue');
+			let review = DB_Review.findOne({_id:id});
+			let like;
+			if (!review) throw new Meteor.Error('no such review');
+			if(!reciew.like) like = 1;
+			else like = recipe.like+1;
+			return DB_Reviews.updateOne({_id:id, {$set:{'like':like}})
+		}
 	})
 
 
