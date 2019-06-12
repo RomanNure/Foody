@@ -1,21 +1,19 @@
 import React, { Component } from 'react';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // Task component - represents a single todo item
 export default class RecipeAdd extends Component {
 	constructor(props){
 		super(props);
 		this.state={
 			ready: true,
-			data:{
-				steps: [],
-				ingr:[],
-				recipe: false,
-				tags: false, 
-				images: false,
-			}
+			data:this.props.recipe?this.props.recipe:{}
 		}
 	}
-	//	shouldComponentUpdate()
+
+	componentDidMount(){
+		M.AutoInit()
+	}
 	ingAdd = () => (e) => {
 		e.preventDefault();
 		let data = this.state.data;
@@ -48,14 +46,62 @@ export default class RecipeAdd extends Component {
 	}
 	handleSubmit = () => (e) =>{
 		e.preventDefault();
-		let data = this.state.data;
-		//		window.Toast('I am a toast!','ok');
-		//	data.name = this.refs.name.value();
-		Meteor.call("recipe.add", this.state.data, (err,done)=>{
-			if(err) console.log('err0r');
-			console.log(done);
+		console.log('this.refs', this.refs)
+		try{
+			let data = {
+				title: this.refs.title.value,
+				RBody: this.refs.RBody.value,
+				tags: this.refs.tags.value,
+				steps: this.state.data.steps,
+				ingr: this.state.data.ingr
+			}
 
-		})
+			data.steps[0]= this.refs.step.value,
+				data.ingr[0]= this.refs.ingr.value,
+				console.log(data)
+
+			this.state.data.steps.length > 1 && this.state.data.steps.map((i,k)=>{
+				let temp = 'step'+k            
+				//console.log(temp, this.refs); 
+				if(this.refs[temp]) data.steps[k] = this.refs[temp].value
+				//  console.log(this.refs[temp].value());
+			})
+			this.state.data.steps.length > 1 && this.state.data.ingr.map((i,k)=>{
+				let temp = 'ingr'+k            
+				//  console.log(temp);          
+				if(this.refs[temp]) data.ingr[k] = this.refs[temp].value
+				//  console.log(this.refs[temp].value());
+			})
+			/*
+		this.state.data.phone && this.state.data.phone.length > 0 && !this.state.data.phones.find(i => i == this.state.data.phone) && this.state.data.phones.push(this.state.data.phone);
+
+		this.state.data.email && this.state.data.email.length > 0 && !this.state.data.emails.find(i => i == this.state.data.email) && this.state.data.emails.push(this.state.data.email);
+		this.state.data.abuse && this.state.data.abuse.length > 0 && !this.state.data.emails.find(i => i == this.state.data.abuse) && this.state.data.emails.push(this.state.data.abuse);
+			//remove empty elements         
+		this.state.data.emails = this.state.data.emails.filter(i => i!= null && i.length > 0);
+		this.state.data.phones = this.state.data.phones.filter(i => i!= null && i.length > 0);
+			//		window.Toast('I am a toast!','ok');
+			*/		//	data.name = this.refs.name.value();
+			console.log('data->',data)
+			Meteor.call("recipe.add", data, (err,done)=>{
+				if(err){ 
+					toast.error(err, {
+						position: toast.POSITION.TOP_RIGHT
+					});	
+					console.log('err0r');
+				}else{
+					toast.success("Recipe  Added!", {
+						position: toast.POSITION.TOP_RIGHT
+					})
+					console.log(done);
+				}
+			})
+		}catch(er){
+			toast.error("Input error !", {
+				position: toast.POSITION.TOP_RIGHT
+			});	
+
+		}
 	}
 
 	render() {
@@ -68,22 +114,22 @@ export default class RecipeAdd extends Component {
 			)
 		}*/
 		return (
-			<div className="container">
-				<div className="row">
+			<div className="container recipe-add">
+				<ToastContainer />				<div className="row">
 
 					<div className="input-field col-12">
-						<input id="name" ref="name" type="text" className="validate"/>
+						<input id="name" ref="title" type="text" className="validate"/>
 						<label for="name">Recipe name</label>
 					</div>
 					<div className="input-field col-7">
-						<input id="ing1"  ref="ing" type="text" className="validate"/>
+						<input id="ing1"  ref="ingr" type="text" className="validate"/>
 						<label for="ing1">Ingridients</label>
 					</div>
 					<div className="row col-12">
 						{this.state.data.ingr && this.state.data.ingr.map((i,k) => {
-							return <div key={'ing-'+i+'-'+k} className="col-7">
+							return <div key={'ingr'+i+'-'+k} className="col-7">
 								<div className="row">
-									<input col="col-6 col-md-6" ref={'ing'+k} type='text' label={"ingridient"+i}  defaultValue={this.state.data.ingr[k]} />
+									<input col="col-6 col-md-6" ref={'ingr'+k} type='text' label={"ingridient"+i}  defaultValue={this.state.data.ingr[k]} />
 									<div className="col-4 mt-4">
 										<button className="mt-0 mt-sm-2 btn-primary btn-close" waves='light' onClick={this.removeIngridient(k)}>Remove</button>
 									</div>
@@ -98,7 +144,7 @@ export default class RecipeAdd extends Component {
 				</div>
 				<div className="row">
 					<div className="input-field col-12">
-						<textarea id="recipe-body" className="materialize-textarea" ></textarea>
+						<textarea id="recipe-body" ref="RBody" className="materialize-textarea" ></textarea>
 						<label for="recipe-body">Recipe body</label>
 					</div>
 					<div className="input-field col-7">
@@ -136,7 +182,7 @@ export default class RecipeAdd extends Component {
 				</div>
 				<div className="row">
 					<div className="input-field col-12">
-						<input id="tag1" placeholder="#sweet" ref="tag" type="text" className="validate"/>
+						<input id="tag1" placeholder="#sweet" ref="tags" type="text" className="validate"/>
 						<label for="tag1">Tag</label>
 					</div>
 					<div className="col-10">
