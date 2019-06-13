@@ -1,52 +1,26 @@
 import React, { Component } from 'react';
 import { withTracker } from 'meteor/react-meteor-data';
 import RecipeSmall from '../component/Recipe-small.js';
-
+import {DB_Recipes} from '../../api/recipes'
 class Recipes extends Component {
-
 	constructor(props) {
 		super(props);
 		this.state = {
-			data: this.props.resipes ? this.props.resipes : {
-				arr: [1, 2, 3, 1, 2, 3, 1, 2, 3, 4]
-
-			},
-
 		};
-	}
-	shouldComponentUpdate(p, s) {
-		if (p != this.props) return false;
-		if (!this.props.ready) return false;
-		return true;
 	}
 
 
 	render() {
-		/*if (!this.props.ready)
-			return (
-				<div class="preloader-wrapper active">
-					<div class="spinner-layer spinner-red-only">
-						<div class="circle-clipper left">
-							<div class="circle"></div>
-						</div><div class="gap-patch">
-							<div class="circle"></div>
-						</div><div class="circle-clipper right">
-							<div class="circle"></div>
-						</div>
-					</div>
-				</div>
-			)
-*/
 		console.log('recipes');
 		return (
 			<div className="container-fluid">
 				<div className="row">
-					{this.state.data && this.state.data.arr.map((i, k) => {
+					{this.props.recipes && this.props.recipes.map((i, k) => {
 						console.log('data=>', i, k);
 						return (
 							<>
 							<div className="recipe-small col-md-7 offset-md-2">
-								<RecipeSmall data={this.state.data} />
+								<RecipeSmall data={i} />
 							</div>
 							<div className="col col-6 devider">
 								<div>hello</div>
@@ -64,18 +38,11 @@ class Recipes extends Component {
 
 
 export default withTracker(() => {
-	let ready = true, user, isAdmin = false;
-	if (Meteor.isClient) {
-		const h = [
-			Meteor.subscribe('recipes'),
-		]
-		//ready = h.every(i => i.ready())
-		//    user = Meteor.user();
-		//    isAdmin = Roles.userIsInRole(user, ['admin','contentor']);
-	}
+//	if (Meteor.isClient) {
+		Meteor.subscribe("recipes")
+//	}
 
 	return {
-		ready,
-		//		recipes: .find({}).fetch(),
+		recipes: DB_Recipes.find({}).fetch(),
 	};
 })(Recipes);

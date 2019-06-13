@@ -93,9 +93,11 @@ export default class RecipeAdd extends Component {
 					toast.success("Recipe  Added!", {
 						position: toast.POSITION.TOP_RIGHT
 					})
+					
 					console.log(done);
 				}
 			})
+			this.props.history.push('/recipes')
 		}catch(er){
 			toast.error("Input error !", {
 				position: toast.POSITION.TOP_RIGHT

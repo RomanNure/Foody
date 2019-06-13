@@ -39,7 +39,7 @@ if(Meteor.isServer){
 			if(!user) throw new Meteor.Error('please authorize to continue');
 			console.log('user =>',user);
 			let	userData = {
-				name: user.name,
+				name: user.emails[0].address,
 				img: user.img,
 				id: user._id,
 			}
@@ -78,12 +78,12 @@ if(Meteor.isServer){
 			if(!user) throw new Meteor.Error('please authorize to continue');
 			console.log('user =>',user);
 			let	userData = {
-				name: user.name,
+				name: user.services.emails[0].address,
 				img: user.img,
 				id: user._id,
 			}
 			//data from google
-			if(!userData.name)
+			if(userData && !userData.name) 
 				userData = {
 					name: user.services.google.name,
 					pucture: user.services.google.picture,
@@ -101,8 +101,8 @@ if(Meteor.isServer){
 			let like;
 			if (!recipe) throw new Meteor.Error('no such recipe');
 			if(!recipe.like) like = 1;
-			else like = recipe.like+1;
-			return DB_Recipes.updateOne({_id:id}, {$set:{'like':like}})
+			else like = recipe.like +1;
+			return DB_Recipes.update({_id:id}, {$set:{'like':like}})
 		},
 		'review.like'(id){
 			check(id, String);
@@ -113,7 +113,7 @@ if(Meteor.isServer){
 			if (!review) throw new Meteor.Error('no such review');
 			if(!reciew.like) like = 1;
 			else like = recipe.like+1;
-			return DB_Reviews.updateOne({_id:id}, {$set:{'like':like}})
+			return DB_Reviews.UpdateOne({_id:id}, {$set:{'like':like}})
 		}
 	})
 
